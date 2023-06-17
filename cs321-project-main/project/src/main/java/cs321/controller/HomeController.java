@@ -29,10 +29,16 @@ public class HomeController {
         return "home";
     }
 
-    @GetMapping("/dashboard")
-    public String dashboard() {
-        return "dashboard";
+    @GetMapping("/StudentDashboard")
+    public String studentDashboard() {
+        return "StudentDashboard";
     }
+
+    @GetMapping("/ProfDashboard")
+    public String professorDashboard() {
+        return "ProfDashboard";
+    }
+
 
     @GetMapping("/login")
     public String login(HttpServletRequest request) {
@@ -132,18 +138,19 @@ public class HomeController {
                 HttpSession session = request.getSession();
                 session.setAttribute("username", resultSet.getString("username"));
 
+                String role = resultSet.getString("role");
                 // Return "success" so JavaScript can redirect to the dashboard
-                return "success";
+                return "success:" + role;
             } else {
                 // Invalid credentials, return "error" so JavaScript can make the container shake
-                return "error";
+                return "error:invalid_credentials";
             }
         } catch (SQLException e) {
             // Handle any potential database errors
             e.printStackTrace();
 
             // Return "error" so JavaScript can make the container shake
-            return "error";
+            return "error:database_error";
         }
     }
 }

@@ -126,13 +126,25 @@ button:hover {
                     dataType: 'text',
                     success: function (response) {
                         console.log("Response from server:", response); // Log the response
-                        if (response.trim() === 'success') {
-                            window.location.href = "/dashboard";
-                        } else {
-                            var container = $(".container");
-                            container.addClass("shake");
-                            setTimeout(function(){ container.removeClass("shake"); }, 555);
-                        }
+                        var splitResponse = response.trim().split(":");
+                        if (splitResponse[0] === 'success') {
+    // Handle success
+    if (splitResponse[1] === 'Student') {
+        window.location.href = "/StudentDashboard";
+    } else if (splitResponse[1] === 'Professor') {
+        window.location.href = "/ProfDashboard";
+    }
+} else if (splitResponse[0] === 'error') {
+    // Handle errors
+    if (splitResponse[1] === 'invalid_credentials') {
+        var container = $(".container");
+        container.addClass("shake");
+        setTimeout(function(){ container.removeClass("shake"); }, 555);
+    } else if (splitResponse[1] === 'database_error') {
+        alert('There was a problem connecting to the database.');
+    }
+}
+
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         console.log("AJAX error:", textStatus, errorThrown); // Log the error
