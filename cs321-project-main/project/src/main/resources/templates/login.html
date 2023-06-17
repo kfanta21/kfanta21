@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+}
+
+.container {
+    width: 350px;
+    padding: 40px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 14px 28px rgba(0,0,0,0.25), 0px 10px 10px rgba(0,0,0,0.22);
+}
+.signupbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+}
+.signupbtn:hover {
+    opacity: 1;
+}
+
+@keyframes shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+.shake {
+    animation: shake 0.5s;
+    animation-iteration-count: 2;
+}
+
+
+h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #6a11cb;
+}
+
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    border-bottom: 1px solid #6a11cb;
+    background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+button {
+    background-color: #6a11cb;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    border-radius: 50px;  /* Makes the button oval */
+}
+
+button:hover {
+    opacity:1;
+    transition: 0.5s;
+}
+
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <h2>TaskTrack</h2>
+        
+        <form id="loginForm" action="/login" method="post">
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+        
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+        
+            <button type="submit">Login</button>
+            <div class="bottom-action">
+                <button type="button" onclick="window.location.href='register.html'" class="signupbtn">Sign Up</button>
+            </div>
+            <div class="options">
+                <span class="psw">Forgot <a href="#">password?</a></span>
+            </div>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#loginForm").on("submit", function (event) {
+                event.preventDefault();
+    
+                $.ajax({
+                    type: "POST",
+                    url: "/login",
+                    data: $(this).serialize(),
+                    dataType: 'text',
+                    success: function (response) {
+                        console.log("Response from server:", response); // Log the response
+                        if (response.trim() === 'success') {
+                            window.location.href = "/dashboard";
+                        } else {
+                            var container = $(".container");
+                            container.addClass("shake");
+                            setTimeout(function(){ container.removeClass("shake"); }, 555);
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        console.log("AJAX error:", textStatus, errorThrown); // Log the error
+                    }
+                });
+            });
+        });
+    </script>    
+    
+    </body>
+</html>

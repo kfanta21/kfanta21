@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TaskTrack - Registration</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+   body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    box-shadow: 0px 14px 28px rgba(0,0,0,0.25), 0px 10px 10px rgba(0,0,0,0.22);
+    width: 400px;
+    max-width: 100%;
+    padding: 40px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: #6a11cb;
+}
+
+
+input[type=text], input[type=password] {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    font-size: 14px;
+    background: rgba(0, 0, 0, 0.1);
+}
+input[type=text]:focus, input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+.registerbtn {
+    background-color: #6a11cb;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    opacity: 0.9;
+    border-radius: 50px;
+    display: block;
+}
+
+.registerbtn:hover {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.container .signin {
+    margin-top: 25px;
+    text-align: center;
+    font-size: 14px;
+}
+
+    </style>        
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome to TaskTrack</h2>
+        <p>Please fill in this form to create an account.</p>
+        <hr>
+    
+        <form action="/signup" method="post">
+            <label for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" id="username" required>
+        
+            <label for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" id="password" required>
+        
+            <label for="password-repeat"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="password-repeat" id="password-repeat" required>
+
+            <div>
+                <input type="radio" id="student" name="userType" value="STUDENT" required>
+                <label for="student">Student</label>
+
+                <input type="radio" id="professor" name="userType" value="PROFESSOR" required>
+                <label for="professor">Professor</label>
+            </div>
+        
+            <button type="submit" class="registerbtn">Register</button>
+        </form>
+    
+        <div class="signin">
+            <p>Already have an account? <a href="login.html">Sign in</a>.</p>
+        </div>
+    </div>    
+</body>
+</html>
