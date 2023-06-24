@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>StudentTasks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap');
+body {
+  margin: 0;
+  min-width: 250px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  list-style-type: none;
+  background: #4CAF50;
+  font-size: 18px;
+  transition: 0.2s;
+
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+ul li:hover {
+  background: #4CAF50;
+}
+ul li.checked {
+  background: #888;
+  color: #fff;
+  text-decoration: line-through;
+}
+ul li.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+.close {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: #4CAF50;
+}
+
+.header1 {
+  border-radius: 25px;
+  background-color: #6a11cb;
+  padding: 30px 40px;
+  color: #4CAF50;
+  text-align: center;
+}
+
+.header1:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+input {
+  margin: 0;
+  border: none;
+  border-radius: 25px;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
+}
+
+.cssbuttons-io-button {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 0.7em 1.4em 0.7em 1.1em;
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(0deg, rgba(20,167,62,1) 0%, rgba(102,247,113,1) 100%);
+  border: none;
+  box-shadow: 0 0.7em 1.5em -0.5em #14a73e98;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+}
+
+.cssbuttons-io-button svg {
+  margin-right: 6px;
+}
+
+.cssbuttons-io-button:hover {
+  box-shadow: 0 0.5em 1.5em -0.5em #14a73e98;
+}
+
+.cssbuttons-io-button:active {
+  box-shadow: 0 0.3em 1em -0.5em #14a73e98;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+header{
+  height: 90px;
+  background: #4CAF50;
+}
+
+.inner-width{
+  max-width: 1000px;
+  padding: 0 10px;
+  margin: auto;
+}
+
+.logo{
+  float: left;
+  padding: 27px 0;
+  color: #fff;
+}
+
+.logo img{
+  height: 50px;
+}
+
+.navigation-menu{
+  float: right;
+  display: flex;
+  align-items: center;
+  min-height: 90px;
+}
+
+.navigation-menu a{
+  margin-left: 10px;
+  color: #ddd;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  transition: .3s linear;
+}
+
+.navigation-menu a:hover{
+  background: #4CAF50;
+  color: #6a11cb;
+  transform: scale(1.1);
+}
+
+.navigation-menu i{
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+.home{
+  color: #fff;
+}
+
+a.aj_btn {
+  background: #6a11cb;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+a.aj_btn:hover{
+  background: #6a11cb;
+  color: #273b91;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.menu-toggle-btn{
+  float: right;
+  height: 90px;
+  line-height: 90px !important;
+  color: #6a11cb;
+  font-size: 26px;
+  display: none !important;
+  cursor: pointer;
+}
+
+@media screen and (max-width:900px) {
+  .menu-toggle-btn{
+    display: block !important;
+  }
+
+  .navigation-menu{
+    position: fixed;
+    width: 100%;
+    max-width: 400px;
+    background: #172b4d;
+    top: 90px;
+    right: 0;
+    display: none;
+    padding: 20px 40px;
+    box-sizing: border-box;
+  }
+
+  .navigation-menu::before{
+    content: "";
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #172b4d;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+  }
+
+  .navigation-menu a{
+    display: block;
+    margin: 10px 0;
+  }
+
+  .navigation-menu.active{
+    display: block;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="inner-width">
+    <h1 class="logo">Student<span style="color:#6a11cb;">Portal</span></h1>
+    <i class="menu-toggle-btn fas fa-bars"></i>
+    <nav class="navigation-menu">
+      <a href="http://localhost:8080/StudentDashboard"><i class="fas fa-home home"></i> Home</a>
+      <a href="http://localhost:8080/courses"><i class="fa fa-graduation-cap"></i> My Classes</a>
+      <a href="http://localhost:8080/tasks"><i class="fas fa-tasks"></i> My Tasks</a>
+      
+      <a href="http://localhost:8080/Settings"><i class="fa fa-cog"></i> Settings</a>
+      <a href="/logout" class="aj_btn"> <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+        LOG OUT</a>
+    </nav>
+  </div>
+</header>
+<div id="myDIV" class="header1">
+  <h2 class="fa fa-check-square-o" style="margin:5px">My To Do List</h2>
+  <p style="text-align: left;">Task</p>
+  <input type="text" id="myInput" placeholder="Add New Task....">
+  <br><br>
+  <p style="text-align: left;">Due Date</p>
+  <input type="date" id="myDate" value="2023-06-22">
+  <br><br><br>
+  <button class="cssbuttons-io-button">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path fill="currentColor" d="M11 11V5h2v6h6v2h-6v6h-2v-6H5v-2z"></path></svg>
+    <span onclick="newElement()">Add</span>
+  </button>
+</div>
+<ul id="myUL">
+  <p id="demo"></p>
+</ul>
+
+<script>
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var inputDate = document.getElementById("myDate").value;
+  inputValue += " ";
+  inputValue += " ";
+  inputValue += inputDate;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+    
+    // Send the new task to the server
+$.ajax({
+  url: "/createTask",
+  type: "POST",
+  contentType: "application/json",  // Set content type to JSON
+  data: JSON.stringify({            // Convert data to JSON string
+    taskName: document.getElementById("myInput").value,
+    dueDate: document.getElementById("myDate").value
+  }),
+  success: function(data) {
+    console.log("Task created successfully");
+  },
+  error: function(jqXHR, textStatus, errorThrown) {
+    console.error("Error creating task: " + textStatus);
+  }
+});
+
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+
+</script>
+
+<script>
+$(".menu-toggle-btn").click(function(){
+  $(this).toggleClass("fa-times");
+  $(".navigation-menu").toggleClass("active");
+});
+</script>
+</body>
+</html>

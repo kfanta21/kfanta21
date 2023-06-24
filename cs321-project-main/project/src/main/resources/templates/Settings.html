@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Settings Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css">
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+header{
+  height: 90px;
+  background: #4CAF50;
+}
+
+.inner-width{
+  max-width: 1000px;
+  padding: 0 10px;
+  margin: auto;
+}
+
+.logo{
+  float: left;
+  padding: 27px 0;
+  color: #fff;
+}
+
+.logo img{
+  height: 50px;
+}
+
+.navigation-menu{
+  float: right;
+  display: flex;
+  align-items: center;
+  min-height: 90px;
+}
+
+.navigation-menu a{
+  margin-left: 10px;
+  color: #ddd;
+  text-transform: uppercase;
+  font-size: 14px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  transition: .3s linear;
+}
+
+.navigation-menu a:hover{
+  background: #4CAF50;
+  color: #6a11cb;
+  transform: scale(1.1);
+}
+
+.navigation-menu i{
+  margin-right: 5px;
+  font-size: 16px;
+}
+
+.home{
+  color: #fff;
+}
+
+a.aj_btn {
+  background: #6a11cb;
+  color: #fff;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+a.aj_btn:hover{
+  background: #6a11cb;
+  color: #273b91;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.menu-toggle-btn{
+  float: right;
+  height: 90px;
+  line-height: 90px !important;
+  color: #6a11cb;
+  font-size: 26px;
+  display: none !important;
+  cursor: pointer;
+}
+
+
+@media screen and (max-width:900px) {
+  .menu-toggle-btn{
+    display: block !important;
+  }
+
+  .navigation-menu{
+    position: fixed;
+    width: 100%;
+    max-width: 400px;
+    background: #172b4d;
+    top: 90px;
+    right: 0;
+    display: none;
+    padding: 20px 40px;
+    box-sizing: border-box;
+  }
+
+  .navigation-menu::before{
+    content: "";
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #172b4d;
+    position: absolute;
+    top: -10px;
+    right: 10px;
+  }
+
+  .navigation-menu a{
+    display: block;
+    margin: 10px 0;
+  }
+
+  .navigation-menu.active{
+    display: block;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="inner-width">
+        <h1 class="logo">Student<span style="color:#6a11cb;">Portal</h1>
+        <i class="menu-toggle-btn fas fa-bars"></i>
+        <nav class="navigation-menu">
+          <a href="http://localhost:8080/StudentDashboard"><i class="fas fa-home home"></i> Home</a>
+          <a href="http://localhost:8080/courses"><i class="fa fa-graduation-cap"></i> My Classes</a>
+          <a href="http://localhost:8080/tasks"><i class="fas fa-tasks"></i> My Tasks</a>
+          
+          <a href="http://localhost:8080/Settings"><i class="fa fa-cog"></i> Settings</a>
+          <a href="/logout" class="aj_btn"> <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+            LOG OUT</a>
+        </nav>
+        </span>
+      </div>
+    </header>
+    <br>
+    <h1>Contact Info:</h1>
+    <h>Email: <a href="mailto:CS321@example.com">CS321@example.com</a></h>
+    <p>phone: <a href="tel: 202-###-####">202-###-####</a></p>
+    <script>
+    $(".menu-toggle-btn").click(function(){
+  $(this).toggleClass("fa-times");
+  $(".navigation-menu").toggleClass("active");
+});
+</script>
+  </body>
+</html>
