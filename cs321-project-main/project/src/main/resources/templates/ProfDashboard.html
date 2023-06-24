@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
     <title>Student Dashboard</title>
-    <link rel="stylesheet" href="style.css" />
+    
   <style>
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
 * {
@@ -255,7 +255,7 @@ body.dark {
     left: -100%;
   }
 }</style>
-<link rel="stylesheet" href="style.css" />
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
   </head>
   <body>
@@ -293,15 +293,17 @@ body.dark {
 
         <ul class="menu_items">
           <div class="menu_title menu_editor"></div>
+          <div id="courses"></div>
      
           <li class="item">
-            <a href="#" class="nav_link">
+            <a href="#" id="myClasses" class="nav_link">
               <span class="navlink_icon">
                 <i class="fa fa-graduation-cap"></i>
               </span>
               <span class="navlink">My Classes</span>
             </a>
           </li>
+            
           <li class="item">
             <a href="#" class="nav_link">
               <span class="navlink_icon">
@@ -331,7 +333,7 @@ body.dark {
             </a>
           </li>
           <li class="item">
-            <a href="#" class="nav_link">
+            <a href="/logout" class="nav_link">
               <span class="navlink_icon">
                 <i class="fas fa-sign-out-alt"></i>
               </span>

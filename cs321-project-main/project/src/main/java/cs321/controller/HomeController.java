@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -45,10 +46,36 @@ public class HomeController {
         HttpSession session = request.getSession();
         if (session != null && session.getAttribute("username") != null) {
             // User is already logged in, redirect them to the dashboard
-            return "redirect:/dashboard";
+            return "redirect:/StudentDashboard";
         }
         // User is not logged in, show the login page
         return "login";
+    }
+
+    @GetMapping("/courses")
+    public String courses(HttpServletRequest request) {
+        return "courses";
+    }
+
+    @GetMapping("/tasks")
+    public String tasks(HttpServletRequest request) {
+        return "tasks";
+    }
+
+    @GetMapping("/Settings")
+    public String Settings(HttpServletRequest request) {
+        return "Settings";
+    }
+
+    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    public String logout(HttpServletRequest request) {
+        // Invalidate the session
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            session.invalidate();
+        }
+        // Redirect to the login page
+        return "redirect:/login";
     }
 
     @GetMapping("/signup")
@@ -92,7 +119,7 @@ public class HomeController {
                 // Set the user as authenticated in the session
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
-                return "redirect:/dashboard"; // Redirect to the dashboard page after successful signup
+                return "redirect:/logout"; // Redirect to the dashboard page after successful signup
             }
         } catch (SQLException e) {
             System.out.println("die");
